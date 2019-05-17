@@ -1,10 +1,11 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-struct Node{
+struct Node
+{
     int data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
 };
 
 Node *newNode(int key)
@@ -16,7 +17,8 @@ Node *newNode(int key)
     return node;
 }
 
-void insert(Node** headref, int data){
+void insert(Node **headref, int data)
+{
 
     if (*headref == NULL)
     {
@@ -24,17 +26,18 @@ void insert(Node** headref, int data){
         return;
     }
 
-    Node* travptr = *headref;
-    Node* parentNode = NULL;
+    Node *travptr = *headref;
+    Node *parentNode = NULL;
 
-    while(travptr != NULL){
+    while (travptr != NULL)
+    {
         parentNode = travptr;
-        travptr = (data > travptr->data) ? travptr->right: travptr->left;
+        travptr = (data > travptr->data) ? travptr->right : travptr->left;
     }
 
-    if (data > parentNode->data )
+    if (data > parentNode->data)
         parentNode->right = newNode(data);
-    
+
     else
         parentNode->left = newNode(data);
 }
@@ -42,15 +45,13 @@ void insert(Node** headref, int data){
 bool find(Node **headref, int data)
 {
     Node *travptr = *headref;
-   
 
     if (data == (*headref)->data)
         return true;
 
     while (travptr != NULL && travptr->data != data)
         travptr = (data > travptr->data) ? travptr->right : travptr->left;
-        
-    
+
     if (travptr == NULL)
     {
         return false;
@@ -58,9 +59,10 @@ bool find(Node **headref, int data)
     return true;
 }
 
-int main(){
+int main()
+{
 
-    Node* head = NULL;
+    Node *head = NULL;
     insert(&head, 1);
     insert(&head, 2);
     insert(&head, 3);
