@@ -53,9 +53,8 @@ bool find(Node **headref, int data)
         travptr = (data > travptr->data) ? travptr->right : travptr->left;
 
     if (travptr == NULL)
-    {
         return false;
-    }
+    
     return true;
 }
 
